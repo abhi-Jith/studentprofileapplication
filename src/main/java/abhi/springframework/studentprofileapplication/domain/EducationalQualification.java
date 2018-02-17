@@ -1,7 +1,11 @@
 package abhi.springframework.studentprofileapplication.domain;
 
-import javax.persistence.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+import javax.persistence.*;
+@Data
+@EqualsAndHashCode(exclude = "studentProfile")
 @Entity
 public class EducationalQualification {
 
@@ -32,41 +36,10 @@ public class EducationalQualification {
         this.qualification = qualification;
         this.institutionName = institutionName;
         this.year = year;
-       // this.certificateImage = certificateImage;
+        // this.certificateImage = certificateImage;
         this.studentProfile = studentProfile;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getQualification() {
-        return qualification;
-    }
-
-    public void setQualification(String qualification) {
-        this.qualification = qualification;
-    }
-
-    public String getInstitutionName() {
-        return institutionName;
-    }
-
-    public void setInstitutionName(String institutionName) {
-        this.institutionName = institutionName;
-    }
-
-    public String getYear() {
-        return year;
-    }
-
-    public void setYear(String year) {
-        this.year = year;
-    }
 
 //    public Byte[] getCertificateImage() {
 //        return certificateImage;
@@ -76,11 +49,4 @@ public class EducationalQualification {
 //        this.certificateImage = certificateImage;
 //    }
 
-    public StudentProfile getStudentProfile() {
-        return studentProfile;
-    }
-
-    public void setStudentProfile(StudentProfile studentProfile) {
-        this.studentProfile = studentProfile;
-    }
 }

@@ -1,8 +1,12 @@
 package abhi.springframework.studentprofileapplication.domain;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import javax.persistence.*;
 import java.util.Set;
-
+@Data
+@EqualsAndHashCode(exclude = "studentProfiles")
 @Entity
 public class SkillSet {
     @Id
@@ -14,36 +18,4 @@ public class SkillSet {
 
     @ManyToMany(mappedBy ="skillSets" )
     private Set<StudentProfile> studentProfiles;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getSkillName() {
-        return skillName;
-    }
-
-    public void setSkillName(String skillName) {
-        this.skillName = skillName;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Set<StudentProfile> getStudentProfiles() {
-        return studentProfiles;
-    }
-
-    public void setStudentProfiles(Set<StudentProfile> studentProfiles) {
-        this.studentProfiles = studentProfiles;
-    }
 }

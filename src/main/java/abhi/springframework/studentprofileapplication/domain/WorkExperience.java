@@ -1,7 +1,11 @@
 package abhi.springframework.studentprofileapplication.domain;
 
-import javax.persistence.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+import javax.persistence.*;
+@Data
+@EqualsAndHashCode(exclude = "studentProfile")
 @Entity
 public class WorkExperience {
     @Id
@@ -48,70 +52,6 @@ public class WorkExperience {
         this.referenceNumber = referenceNumber;
         this.workExperienceDescription = workExperienceDescription;
         this.studentProfile = studentProfile;
-        this.unitOfDuration = unitOfDuration;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getCompanyName() {
-        return companyName;
-    }
-
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }
-
-    public String getPositionName() {
-        return positionName;
-    }
-
-    public void setPositionName(String positionName) {
-        this.positionName = positionName;
-    }
-
-    public String getCompanyAddress() {
-        return companyAddress;
-    }
-
-    public void setCompanyAddress(String companyAddress) {
-        this.companyAddress = companyAddress;
-    }
-
-    public String getWorkExperienceDescription() {
-        return workExperienceDescription;
-    }
-
-    public void setWorkExperienceDescription(String workExperienceDescription) {
-        this.workExperienceDescription = workExperienceDescription;
-    }
-
-    public StudentProfile getStudentProfile() {
-        return studentProfile;
-    }
-
-    public void setStudentProfile(StudentProfile studentProfile) {
-        this.studentProfile = studentProfile;
-    }
-
-    public Integer getReferenceNumber() {
-        return referenceNumber;
-    }
-
-    public void setReferenceNumber(Integer referenceNumber) {
-        this.referenceNumber = referenceNumber;
-    }
-
-    public UnitOfDuration getUnitOfDuration() {
-        return unitOfDuration;
-    }
-
-    public void setUnitOfDuration(UnitOfDuration unitOfDuration) {
         this.unitOfDuration = unitOfDuration;
     }
 }

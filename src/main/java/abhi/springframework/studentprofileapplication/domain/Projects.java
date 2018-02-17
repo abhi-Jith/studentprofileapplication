@@ -1,7 +1,11 @@
 package abhi.springframework.studentprofileapplication.domain;
 
-import javax.persistence.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+import javax.persistence.*;
+@Data
+@EqualsAndHashCode(exclude = "studentProfile")
 @Entity
 public class Projects {
     @Id
@@ -29,46 +33,6 @@ public class Projects {
         this.projectDescription = projectDescription;
         this.projectTitle = projectTitle;
         this.technologiesUsed = technologiesUsed;
-        this.studentProfile = studentProfile;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getProjectDescription() {
-        return projectDescription;
-    }
-
-    public void setProjectDescription(String projectDescription) {
-        this.projectDescription = projectDescription;
-    }
-
-    public String getProjectTitle() {
-        return projectTitle;
-    }
-
-    public void setProjectTitle(String projectTitle) {
-        this.projectTitle = projectTitle;
-    }
-
-    public String getTechnologiesUsed() {
-        return technologiesUsed;
-    }
-
-    public void setTechnologiesUsed(String technologiesUsed) {
-        this.technologiesUsed = technologiesUsed;
-    }
-
-    public StudentProfile getStudentProfile() {
-        return studentProfile;
-    }
-
-    public void setStudentProfile(StudentProfile studentProfile) {
         this.studentProfile = studentProfile;
     }
 }
