@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Profile Index Page</title>
+</head>
+<body>
+<h1>My Profile!!</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>FirstName</th>
+        <th>LastName</th>
+    </tr>
+    <tr th:each="student : ${studentProfiles}">
+        <td th:text="${student.id}">123</td>
+        <td th:text="${student.firstName}">abhi</td>
+        <td th:text="${student.lastName}">abhi</td>
+    </tr>
+</table>
+</body>
+</html>
