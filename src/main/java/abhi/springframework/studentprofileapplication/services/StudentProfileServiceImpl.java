@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 @Slf4j
 @Service
@@ -25,4 +26,19 @@ public class StudentProfileServiceImpl implements StudentProfileService {
 
         return studentProfileSet;
     }
+
+    @Override
+    public StudentProfile findById(Long l) {
+        log.debug("Getting Student profile by id");
+
+        Optional<StudentProfile> studentProfileOptional = studentProfileRepository.findById(l);
+
+        if (!studentProfileOptional.isPresent()){
+            throw  new RuntimeException("Student Profile Not Found.");
+        }
+
+        return studentProfileOptional.get();
+
+    }
+
 }

@@ -8,4 +8,6 @@ import java.util.Set;
 public interface StudentProfileService {
 
     Set<StudentProfile> getStudentProfile();
+    StudentProfile findById(Long l);
+
 }
