@@ -49,8 +49,10 @@ public class StudentProfile {
 
 
     public void setAboutme(Aboutme aboutme) {
-        this.aboutme = aboutme;
-        aboutme.setStudentProfile(this);
+        if (aboutme != null) {
+            this.aboutme = aboutme;
+            aboutme.setStudentProfile(this);
+        }
     }
 
     public StudentProfile addEducationalQualification(EducationalQualification educationalQualification) {

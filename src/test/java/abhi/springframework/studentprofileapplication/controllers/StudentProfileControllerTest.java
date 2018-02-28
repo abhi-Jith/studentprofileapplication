@@ -10,6 +10,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -22,10 +24,13 @@ public class StudentProfileControllerTest {
     StudentProfileService studentProfileService;
 
     StudentProfileController studentProfileController;
+
+    MockMvc mockMvc;
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         studentProfileController = new StudentProfileController(studentProfileService);
+        mockMvc = MockMvcBuilders.standaloneSetup(studentProfileController).build();
     }
 
     @Test
@@ -33,13 +38,21 @@ public class StudentProfileControllerTest {
         StudentProfile studentProfile = new StudentProfile();
         studentProfile.setId(1L);
 
-        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(studentProfileController).build();
+
 
         when(studentProfileService.findById(anyLong())).thenReturn(studentProfile);
 
-        mockMvc.perform(get("/student/show/1"))
+        mockMvc.perform(get("/student/1/show"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("student/show"));
+    }
+    @Test
+    public void testDeleteAction() throws Exception {
+        mockMvc.perform(get("/student/1/delete"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/"));
+
+        verify(studentProfileService,times(1)).deleteById(anyLong());
     }
 
 }

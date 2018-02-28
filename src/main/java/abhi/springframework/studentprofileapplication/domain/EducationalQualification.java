@@ -41,12 +41,5 @@ public class EducationalQualification {
     }
 
 
-//    public Byte[] getCertificateImage() {
-//        return certificateImage;
-//    }
-//
-//    public void setCertificateImage(Byte[] certificateImage) {
-//        this.certificateImage = certificateImage;
-//    }
 
 }
