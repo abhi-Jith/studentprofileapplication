@@ -35,7 +35,16 @@
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <!--/*@thymesVar id="student" type="abhi.springframework.studentprofileapplication.domain.StudentProfile"*/-->
-                        <h1 class="panel-title"th:text="${student.firstName}">Student Name Here!</h1>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h1 class="panel-title" th:text="${student.firstName}">Student Name Here!</h1>
+                            </div>
+
+                            <div class="col-md-1">
+                                <a class="btn btn-default" href="#"
+                                   th:href="@{'/student/' + ${student.id} + '/image'}" role="button">Change Image</a>
+                            </div>
+                        </div>
                     </div>
                     <div class="panel-body">
                         <div class="row">
@@ -45,6 +54,9 @@
                             <div class="col-md-3">
                                 <!--/*@thymesVar id="student" type="abhi.springframework.studentprofileapplication.domain.StudentProfile"*/-->
                                 <p th:text="${student.lastName}">XYZ</p>
+                            </div>
+                            <div class="col-md-6">
+                                <img src="../../static/images/Staticabhi.jpg" th:src="@{'/student/' + ${student.id} + '/studentimage'}" width="200" height="200">
                             </div>
                             <div class="col-md-3">
                                 <h5>Gender:</h5>

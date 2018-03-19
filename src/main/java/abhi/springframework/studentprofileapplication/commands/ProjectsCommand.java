@@ -12,4 +12,5 @@ public class ProjectsCommand {
     private String projectDescription;
     private String projectTitle;
     private String technologiesUsed;
+    private Long studentProfileId;
 }

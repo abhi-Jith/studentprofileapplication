@@ -18,8 +18,12 @@ public class ProjectsToProjectsCommand implements Converter<Projects,ProjectsCom
         }
         final ProjectsCommand projectsCommand = new ProjectsCommand();
         projectsCommand.setId(projects.getId());
+        if (projects.getStudentProfile()!= null) {
+            projectsCommand.setStudentProfileId(projects.getStudentProfile().getId());
+        }
         projectsCommand.setProjectDescription(projects.getProjectDescription());
         projectsCommand.setProjectTitle(projects.getProjectTitle());
+
         projectsCommand.setTechnologiesUsed(projects.getTechnologiesUsed());
         return projectsCommand;
     }

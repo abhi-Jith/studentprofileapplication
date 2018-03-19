@@ -12,4 +12,5 @@ public class EducationalQualificationCommand {
     private String institutionName;
     private String qualification;
     private String year;
+    private Long studentProfileId;
 }

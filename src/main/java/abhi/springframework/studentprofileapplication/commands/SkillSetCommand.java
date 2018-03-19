@@ -11,4 +11,5 @@ public class SkillSetCommand {
     private Long id;
     private String skillName;
     private String description;
+    private Long studentProfileId;
 }

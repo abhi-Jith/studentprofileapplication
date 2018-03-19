@@ -13,12 +13,21 @@ public class UnitOfDurationToUnitOfDurationCommand implements Converter<UnitOfDu
     @Nullable
     @Override
     public UnitOfDurationCommand convert(UnitOfDuration unitOfDuration) {
-        if (unitOfDuration == null) {
-            return null;
+//        if (unitOfDuration == null) {
+//            return null;
+//        }
+//        final UnitOfDurationCommand unitOfDurationCommand = new UnitOfDurationCommand();
+//        unitOfDurationCommand.setId(unitOfDuration.getId());
+//        unitOfDurationCommand.setUod(unitOfDuration.getUod());
+//        return unitOfDurationCommand;
+
+        if (unitOfDuration != null) {
+            final UnitOfDurationCommand unitOfDurationCommand = new UnitOfDurationCommand();
+            unitOfDurationCommand.setId(unitOfDuration.getId());
+            unitOfDurationCommand.setUod(unitOfDuration.getUod());
+            return unitOfDurationCommand;
+
         }
-        final UnitOfDurationCommand unitOfDurationCommand = new UnitOfDurationCommand();
-        unitOfDurationCommand.setId(unitOfDuration.getId());
-        unitOfDurationCommand.setUod(unitOfDuration.getUod());
-        return unitOfDurationCommand;
+        return null;
     }
 }

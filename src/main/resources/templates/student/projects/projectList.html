@@ -35,7 +35,14 @@
             <div class="panel panel-primary">
 
                 <div class="panel-heading">
-                    <h1 class="panel-title">Projects</h1>
+                    <div class="row">
+                        <div class="col-md-11 ">
+                            <h1 class="panel-title">Projects</h1>
+                        </div>
+                        <div class="col-md-1">
+                            <a class="btn btn-default" href="#" th:href="@{'/student/' + ${student.id} + '/projects/new'}" role="button">New</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="panel-body">
 
@@ -75,9 +82,9 @@
                                 <td th:text="${proj.getProjectTitle()}">Pos name</td>
                                 <td th:text="${proj.getTechnologiesUsed()}">Ref no</td>
                                 <td th:text="${proj.getProjectDescription()}">Company Name</td>
-                                <td><a href="#" th:href="@{'/student/' + ${student.id} + '/projects/' + ${student.id} + '/show'}">View</a></td>
-                                <td><a href="#" th:href="@{'/student/' + ${student.id} + '/projects/' + ${student.id} + '/update'}">Update</a></td>
-                                <td><a href="#" th:href="@{'/student/' + ${student.id} + '/projects/' + ${student.id} + '/delete'}">Delete</a></td>
+                                <td><a href="#" th:href="@{'/student/' + ${student.id} + '/projects/' + ${proj.id} + '/show'}">View</a></td>
+                                <td><a href="#" th:href="@{'/student/' + ${student.id} + '/projects/' + ${proj.id} + '/update'}">Update</a></td>
+                                <td><a href="#" th:href="@{'/student/' + ${student.id} + '/projects/' + ${proj.id} + '/delete'}">Delete</a></td>
                             </tr>
                         </table>
                     </div>

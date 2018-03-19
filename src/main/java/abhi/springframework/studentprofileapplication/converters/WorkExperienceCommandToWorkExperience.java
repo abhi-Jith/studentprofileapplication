@@ -1,6 +1,7 @@
 package abhi.springframework.studentprofileapplication.converters;
 
 import abhi.springframework.studentprofileapplication.commands.WorkExperienceCommand;
+import abhi.springframework.studentprofileapplication.domain.StudentProfile;
 import abhi.springframework.studentprofileapplication.domain.WorkExperience;
 import lombok.Synchronized;
 import org.springframework.core.convert.converter.Converter;
@@ -24,6 +25,13 @@ public class WorkExperienceCommandToWorkExperience implements Converter<WorkExpe
         }
         final WorkExperience workExperience= new WorkExperience();
         workExperience.setId(source.getId());
+
+        if(source.getStudentProfileId() != null){
+            StudentProfile studentProfile = new StudentProfile();
+            studentProfile.setId(source.getStudentProfileId());
+            workExperience.setStudentProfile(studentProfile);
+            studentProfile.addWorkExperience(workExperience);
+        }
         workExperience.setCompanyAddress(source.getCompanyAddress());
         workExperience.setCompanyName(source.getCompanyName());
         workExperience.setPositionName(source.getPositionName());

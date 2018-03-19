@@ -4,6 +4,7 @@ import abhi.springframework.studentprofileapplication.commands.StudentProfileCom
 import abhi.springframework.studentprofileapplication.converters.StudentProfileCommandToStudentProfile;
 import abhi.springframework.studentprofileapplication.converters.StudentProfileToStudentProfileCommand;
 import abhi.springframework.studentprofileapplication.domain.StudentProfile;
+import abhi.springframework.studentprofileapplication.exceptions.NotFoundException;
 import abhi.springframework.studentprofileapplication.repositories.StudentProfileRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -42,7 +43,8 @@ public class StudentProfileServiceImpl implements StudentProfileService {
         Optional<StudentProfile> studentProfileOptional = studentProfileRepository.findById(l);
 
         if (!studentProfileOptional.isPresent()){
-            throw  new RuntimeException("Student Profile Not Found.");
+            throw new NotFoundException("Student id not found, For ID value: " + l.toString());
+            //throw  new RuntimeException("Student Profile Not Found.");
         }
 
         return studentProfileOptional.get();

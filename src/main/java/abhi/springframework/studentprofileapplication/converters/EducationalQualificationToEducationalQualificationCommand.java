@@ -18,6 +18,9 @@ public class EducationalQualificationToEducationalQualificationCommand implement
         }
         final EducationalQualificationCommand educationalQualificationCommand = new EducationalQualificationCommand();
         educationalQualificationCommand.setId(source.getId());
+        if (source.getStudentProfile() != null) {
+            educationalQualificationCommand.setStudentProfileId(source.getStudentProfile().getId());
+        }
         educationalQualificationCommand.setInstitutionName(source.getInstitutionName());
         educationalQualificationCommand.setQualification(source.getQualification());
         educationalQualificationCommand.setYear(source.getYear());

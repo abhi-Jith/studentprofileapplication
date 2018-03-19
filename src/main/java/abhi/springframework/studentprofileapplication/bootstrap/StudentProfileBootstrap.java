@@ -159,6 +159,18 @@ public class StudentProfileBootstrap implements ApplicationListener<ContextRefre
                 "• Used Design patterns to develop robust applications with optimal functionality. \n" +
                 "• Worked on Time and attendance module and implemented various features like recording, tracking, monitoring, evaluating employee's working times, absence etc. \n", months));
 
+        abhiStudentProfile.addWorkExperience(new WorkExperience("Unsdjkfkhsdkfisoft Technology Limited", "Junior Java Developer",
+                "32nd Street, Indiranagar, Banglore-India", 20294532, "Developed web and Enterprise application using Java and J2EE technology. \n" +
+                "• Implemented authorization, authentication using Spring Security. \n" +
+                "• Used spring frameworks to implement IOC and DI. \n" +
+                "• Worked on the agile environment for developing application. \n" +
+                "• Implemented Bean validation and AOP for logging. \n" +
+                "• Perform unit testing using JUnit and Mockito. \n" +
+                "• Implemented RESTful web service for data retrieval. \n" +
+                "• Implemented ORM in the persistence layer using hibernate frameworks. \n" +
+                "• Used Design patterns to develop robust applications with optimal functionality. \n" +
+                "• Worked on Time and attendance module and implemented various features like recording, tracking, monitoring, evaluating employee's working times, absence etc. \n", months));
+
 
         abhiStudentProfile.getSkillSets().add(javaJ2ee);
         abhiStudentProfile.getSkillSets().add(springFramework);

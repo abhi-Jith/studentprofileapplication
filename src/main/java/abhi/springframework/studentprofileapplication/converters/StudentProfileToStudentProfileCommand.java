@@ -45,6 +45,7 @@ public class StudentProfileToStudentProfileCommand implements Converter<StudentP
         studentProfileCommand.setAddress(source.getAddress());
         studentProfileCommand.setFirstName(source.getFirstName());
         studentProfileCommand.setLastName(source.getLastName());
+        studentProfileCommand.setImage(source.getImage());
         studentProfileCommand.setMobileNumber(source.getMobileNumber());
 
         if (source.getEducationalQualifications() != null && source.getEducationalQualifications().size() > 0) {

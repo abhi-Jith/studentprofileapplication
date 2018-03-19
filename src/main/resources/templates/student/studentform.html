@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
@@ -31,7 +31,11 @@
     <div class="container-fluid" style="margin-top: 20px">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <form  th:object="${student}" th:action="@{/student/}">
+                <form  th:object="${student}" th:action="@{/student/}" method="post">
+                    <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+                        <p>Please Correct Errors Below</p>
+                    </div>
+
                     <input type="hidden" th:field="*{id}"/>
                     <div class="pannel-group">
                         <div class="panel panel-primary">
@@ -40,19 +44,37 @@
                             </div>
                             <div class="panel-body">
                                 <div class="row">
-                                    <div class="col-md-3 form-group">
-                                        <label>First Name:</label>
-                                        <input type="text" class="form-control" th:field="*{firstName}"/>
+                                    <div class="col-md-3 form-group" th:class="${#fields.hasErrors('firstName')}
+                                       ? 'col-md-3 form-group has-error' : 'col-md-3 form-group'">
+                                        <label th:text="#{student.firstName}">First Name:</label>
+                                        <input type="text" class="form-control" th:field="*{firstName}" th:errorclass="has-error"/>
+                                            <span class="help-block" th:if="${#fields.hasErrors('firstName')}">
+                                                <ul>
+                                                   <li th:each="err : ${#fields.errors('firstName')}" th:text="${err}"/>
+                                                </ul>
+                                            </span>
                                     </div>
 
-                                    <div class="col-md-3 form-group">
+                                    <div class="col-md-3 form-group" th:class="${#fields.hasErrors('lastName')}
+                                       ? 'col-md-3 form-group has-error' : 'col-md-3 form-group'">
                                         <label>Last Name:</label>
-                                        <input type="text" class="form-control" th:field="*{lastName}"/>
+                                        <input type="text" class="form-control" th:field="*{lastName}" th:errorclass="has-error"/>
+                                        <span class="help-block" th:if="${#fields.hasErrors('lastName')}">
+                                                <ul>
+                                                   <li th:each="err : ${#fields.errors('lastName')}" th:text="${err}"/>
+                                                </ul>
+                                        </span>
                                     </div>
 
-                                    <div class="col-md-3 form-group">
+                                    <div class="col-md-3 form-group" th:class="${#fields.hasErrors('gender')}
+                                       ? 'col-md-3 form-group has-error' : 'col-md-3 form-group'">
                                         <label>Gender:</label>
-                                        <input type="text" class="form-control" th:field="*{gender}"/>
+                                        <input type="text" class="form-control" th:field="*{gender}" th:errorclass="has-error"/>
+                                        <span class="help-block" th:if="${#fields.hasErrors('gender')}">
+                                                <ul>
+                                                   <li th:each="err : ${#fields.errors('gender')}" th:text="${err}"/>
+                                                </ul>
+                                        </span>
                                     </div>
                                 </div>
                                 <!--<div class="row">-->
@@ -75,35 +97,69 @@
                                 <!--</div>-->
                                 <!--</div>-->
                                 <div class="row">
-                                    <div class="col-md-3 form-group">
+                                    <div class="col-md-3 form-group" th:class="${#fields.hasErrors('dob')}
+                                       ? 'col-md-3 form-group has-error' : 'col-md-3 form-group'">
                                         <label>Date of Birth:</label>
-                                        <input type="text" class="form-control" th:field="*{dob}"/>
+                                        <input type="text" class="form-control" th:field="*{dob}" th:errorclass="has-error"/>
+                                        <span class="help-block" th:if="${#fields.hasErrors('dob')}">
+                                                <ul>
+                                                   <li th:each="err : ${#fields.errors('dob')}" th:text="${err}"/>
+                                                </ul>
+                                            </span>
                                     </div>
-                                    <div class="col-md-3 form-group">
+                                    <div class="col-md-3 form-group" th:class="${#fields.hasErrors('mobileNumber')}
+                                       ? 'col-md-3 form-group has-error' : 'col-md-3 form-group'">
                                         <label>Mobile No:</label>
-                                        <input type="text" class="form-control" th:field="*{mobileNumber}"/>
+                                        <input type="text" class="form-control" th:field="*{mobileNumber}" th:errorclass="has-error"/>
+                                        <span class="help-block" th:if="${#fields.hasErrors('mobileNumber')}">
+                                                <ul>
+                                                   <li th:each="err : ${#fields.errors('mobileNumber')}" th:text="${err}"/>
+                                                </ul>
+                                            </span>
                                     </div>
                                     <div class="col-md-3 form-group">
                                         <label>Coding Level:</label>
-                                        <select class="form-control" >
-                                            <option>BEGINNER</option>
+                                        <select class="form-control" th:field="*{codingLevel}" >
+                                            <option th:each="codingLevelValue : ${T(abhi.springframework.studentprofileapplication.domain.CodingLevel).values()}"
+                                                    th:value="${codingLevelValue.name()}"
+                                                    th:text="${codingLevelValue.name()}">BEGINNER</option>
+                                        </select>
+                                        <select class="form-control" th:remove="all">
                                             <option>MODERATE</option>
                                             <option>PROFESSIONAL</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-3 form-group">
+                                    <div class="col-md-3 form-group" th:class="${#fields.hasErrors('address')}
+                                       ? 'col-md-3 form-group has-error' : 'col-md-3 form-group'">
                                         <label>Address:</label>
-                                        <input type="text" class="form-control" th:field="*{address}"/>
+                                        <input type="text" class="form-control" th:field="*{address}" th:errorclass="has-error"/>
+                                        <span class="help-block" th:if="${#fields.hasErrors('address')}">
+                                                <ul>
+                                                   <li th:each="err : ${#fields.errors('address')}" th:text="${err}"/>
+                                                </ul>
+                                        </span>
                                     </div>
-                                    <div class="col-md-3 form-group">
+                                    <div class="col-md-3 form-group" th:class="${#fields.hasErrors('emailId')}
+                                       ? 'col-md-3 form-group has-error' : 'col-md-3 form-group'">
                                         <label>Email id:</label>
-                                        <input type="text" class="form-control" th:field="*{emailId}"/>
+                                        <input type="text" class="form-control" th:field="*{emailId}" th:errorclass="has-error"/>
+                                        <span class="help-block" th:if="${#fields.hasErrors('emailId')}">
+                                                <ul>
+                                                   <li th:each="err : ${#fields.errors('emailId')}" th:text="${err}"/>
+                                                </ul>
+                                        </span>
                                     </div>
-                                    <div class="col-md-3 form-group">
+                                    <div class="col-md-3 form-group" th:class="${#fields.hasErrors('ssn')}
+                                       ? 'col-md-3 form-group has-error' : 'col-md-3 form-group'">
                                         <label>SSN:</label>
-                                        <input type="text" class="form-control" th:field="*{ssn}"/>
+                                        <input type="text" class="form-control" th:field="*{ssn}" th:errorclass="has-error"/>
+                                        <span class="help-block" th:if="${#fields.hasErrors('ssn')}">
+                                                <ul>
+                                                   <li th:each="err : ${#fields.errors('ssn')}" th:text="${err}"/>
+                                                </ul>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -128,7 +184,8 @@
                                         <h1 class="panel-title">Educational Qualification</h1>
                                     </div>
                                     <div class="col-md-1">
-                                        <a class="btn btn-default" href="#" role="button">View</a>
+                                        <a class="btn btn-default" href="#" th:href="@{'/student/' + ${student.id} + '/educationalQualification/new'}" role="button">Edit</a>
+                                        <!--<a class="btn btn-default" href="#" role="button">View</a>-->
                                     </div>
                                 </div>
                             </div>
@@ -237,6 +294,16 @@
                                     </div>
                                 </div>
                             </div>
+
+                        <div class ="panel panel-primary">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12 form-group">
+                                        <p>After submitting the above details, you can add the rest of the details by going back to home page and clicking on your profile and clicking on "NEW" to create  new fields for educational qualification, projects and work experience and skillset.</p>
+                                    </div>
+                                </div>
+
+                        </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>

@@ -17,8 +17,10 @@ public class SkillSetCommandToSkillSet implements Converter<SkillSetCommand,Skil
             return null;
         }
         final SkillSet skillSet = new SkillSet();
-        skillSet.setDescription(skillSetCommand.getDescription());
+
         skillSet.setId(skillSetCommand.getId());
+
+        skillSet.setDescription(skillSetCommand.getDescription());
         skillSet.setSkillName(skillSetCommand.getSkillName());
         return skillSet;
     }

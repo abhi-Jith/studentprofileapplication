@@ -12,14 +12,17 @@ public class SkillSetToSkillSetCommand implements Converter<SkillSet,SkillSetCom
     @Synchronized
     @Nullable
     @Override
-    public SkillSetCommand convert(SkillSet skillSet) {
-        if (skillSet == null){
+    public SkillSetCommand convert(SkillSet skillSets) {
+        if (skillSets == null){
             return null;
         }
         final SkillSetCommand skillSetCommand = new SkillSetCommand();
-        skillSetCommand.setDescription(skillSet.getDescription());
-        skillSetCommand.setId(skillSet.getId());
-        skillSetCommand.setSkillName(skillSet.getSkillName());
+        skillSetCommand.setDescription(skillSets.getDescription());
+        skillSetCommand.setId(skillSets.getId());
+//        if (skillSets.getStudentProfiles()!= null) {
+//            skillSetCommand.setStudentProfileId(skillSets.getStudentProfiles());
+//        }
+        skillSetCommand.setSkillName(skillSets.getSkillName());
         return skillSetCommand;
     }
 }

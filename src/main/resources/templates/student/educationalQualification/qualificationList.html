@@ -19,6 +19,7 @@
         .panel-primary {
             border-color: #927bb7;
         }
+
         .panel-primary > .panel-heading {
             color: #fff;
             background-color: #927bb7;
@@ -35,7 +36,15 @@
             <div class="panel panel-primary">
 
                 <div class="panel-heading">
-                    <h1 class="panel-title">Educational Qualification</h1>
+                    <div class="row">
+                        <div class="col-md-11 ">
+                            <h1 class="panel-title">Educational Qualification</h1>
+                        </div>
+                        <div class="col-md-1">
+                            <a class="btn btn-default" href="#" th:href="@{'/student/' + ${student.id} + '/educationalQualification/new'}" role="button">New</a>
+                        </div>
+                    </div>
+                    <!--<h1 class="panel-title">Educational Qualification</h1>-->
                 </div>
                 <div class="panel-body">
 
@@ -71,9 +80,12 @@
                                 <td th:text="${educational.getInstitutionName()}">Institution name</td>
                                 <td th:text="${educational.getQualification()}">qualification</td>
                                 <td th:text="${educational.getYear()}">Year</td>
-                                <td><a href="#" th:href="@{'/student/' + ${student.id} + '/educationalQualification/' + ${student.id} + '/show'}">View</a></td>
-                                <td><a href="#" th:href="@{'/student/' + ${student.id} + '/educationalQualification/' + ${student.id} + '/update'}">Update</a></td>
-                                <td><a href="#" th:href="@{'/student/' + ${student.id} + '/educationalQuaification/' + ${student.id} + '/delete'}">Delete</a></td>
+                                <td><a href="#" th:href="@{'/student/' + ${student.id} + '/educationalQualification/' + ${educational.id} + '/show'}">View</a>
+                                </td>
+                                <td><a href="#" th:href="@{'/student/' + ${student.id} + '/educationalQualification/' + ${educational.id} + '/update'}">Update</a>
+                                </td>
+                                <td><a href="#" th:href="@{'/student/' + ${student.id} + '/educationalQualification/' + ${educational.id} + '/delete'}">Delete</a>
+                                </td>
                             </tr>
                         </table>
                     </div>

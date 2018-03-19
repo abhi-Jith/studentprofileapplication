@@ -2,6 +2,7 @@ package abhi.springframework.studentprofileapplication.converters;
 
 import abhi.springframework.studentprofileapplication.commands.EducationalQualificationCommand;
 import abhi.springframework.studentprofileapplication.domain.EducationalQualification;
+import abhi.springframework.studentprofileapplication.domain.StudentProfile;
 import lombok.Synchronized;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
@@ -17,9 +18,18 @@ public class EducationalQualificationCommandToEducationalQualification implement
             return null;
         }
         final EducationalQualification educationalQualification = new EducationalQualification();
-        educationalQualification.setQualification(source.getQualification());
+
         educationalQualification.setId(source.getId());
+
+        if(source.getStudentProfileId() != null){
+            StudentProfile studentProfile = new StudentProfile();
+            studentProfile.setId(source.getStudentProfileId());
+            educationalQualification.setStudentProfile(studentProfile);
+            studentProfile.addEducationalQualification(educationalQualification);
+        }
+
         educationalQualification.setInstitutionName(source.getInstitutionName());
+        educationalQualification.setQualification(source.getQualification());
         educationalQualification.setYear(source.getYear());
         return educationalQualification;
     }

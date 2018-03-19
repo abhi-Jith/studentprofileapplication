@@ -22,12 +22,16 @@ public class WorkExperienceToWorkExperienceCommand implements Converter<WorkExpe
         if (source == null){
             return null;
         }
-        final WorkExperienceCommand workExperienceCommand= new WorkExperienceCommand();
+        WorkExperienceCommand workExperienceCommand= new WorkExperienceCommand();
         workExperienceCommand.setId(source.getId());
+        if (source.getStudentProfile()!= null) {
+            workExperienceCommand.setStudentProfileId(source.getStudentProfile().getId());
+        }
         workExperienceCommand.setCompanyAddress(source.getCompanyAddress());
         workExperienceCommand.setCompanyName(source.getCompanyName());
         workExperienceCommand.setPositionName(source.getPositionName());
         workExperienceCommand.setReferenceNumber(source.getReferenceNumber());
+
         workExperienceCommand.setWorkExperienceDescription(source.getWorkExperienceDescription());
         workExperienceCommand.setUnitOfDuration(unitOfDurationToUnitOfDurationCommand.convert(source.getUnitOfDuration()));
         return workExperienceCommand;

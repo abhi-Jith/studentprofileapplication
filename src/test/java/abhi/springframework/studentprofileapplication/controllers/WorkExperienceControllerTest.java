@@ -2,6 +2,8 @@ package abhi.springframework.studentprofileapplication.controllers;
 
 import abhi.springframework.studentprofileapplication.commands.StudentProfileCommand;
 import abhi.springframework.studentprofileapplication.services.StudentProfileService;
+import abhi.springframework.studentprofileapplication.services.UnitOfDurationService;
+import abhi.springframework.studentprofileapplication.services.WorkExperienceService;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -20,10 +22,14 @@ public class WorkExperienceControllerTest {
     StudentProfileService studentProfileService;
     WorkExperienceController controller;
     MockMvc mockMvc;
+    @Mock
+    WorkExperienceService  workExperienceService;
+    @Mock
+    UnitOfDurationService unitOfDurationService;
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        controller = new WorkExperienceController(studentProfileService);
+        controller = new WorkExperienceController(studentProfileService,workExperienceService,unitOfDurationService);
         mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
     }
 

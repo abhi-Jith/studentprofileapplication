@@ -1,6 +1,7 @@
 package abhi.springframework.studentprofileapplication.controllers;
 
 import abhi.springframework.studentprofileapplication.commands.StudentProfileCommand;
+import abhi.springframework.studentprofileapplication.services.ProjectsService;
 import abhi.springframework.studentprofileapplication.services.StudentProfileService;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,10 +20,12 @@ public class ProjectsControllerTest {
     StudentProfileService studentProfileService;
     ProjectsController controller;
     MockMvc mockMvc;
+    @Mock
+    ProjectsService projectsService;
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        controller = new ProjectsController(studentProfileService);
+        controller = new ProjectsController(studentProfileService,projectsService);
         mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
     }
 
