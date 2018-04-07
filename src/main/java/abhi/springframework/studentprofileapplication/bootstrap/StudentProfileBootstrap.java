@@ -6,6 +6,7 @@ import abhi.springframework.studentprofileapplication.repositories.StudentProfil
 import abhi.springframework.studentprofileapplication.repositories.UnitOfDurationRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
+import org.springframework.context.annotation.Profile;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.Optional;
 @Slf4j
 @Component
+@Profile("default")
 public class StudentProfileBootstrap implements ApplicationListener<ContextRefreshedEvent> {
     private SkillSetRepository skillSetRepository;
     private StudentProfileRepository studentProfileRepository;
@@ -157,12 +159,19 @@ public class StudentProfileBootstrap implements ApplicationListener<ContextRefre
                 "• Implemented RESTful web service for data retrieval. \n" +
                 "• Implemented ORM in the persistence layer using hibernate frameworks. \n" +
                 "• Used Design patterns to develop robust applications with optimal functionality. \n" +
-                "• Worked on Time and attendance module and implemented various features like recording, tracking, monitoring, evaluating employee's working times, absence etc. \n" +
-                "• Extensive Use of Session Management, View state and Cookie(s) to maintain state in the applications. \n" +
-                "• Wrote and modified stored procedures, triggers, views and custom functions and query optimization with SQL Server Profiler. \n" +
-                "• Used Jenkins for continuous integration. \n" +
-                "• Dynamic reports using Jasper Reports for easy and safe documentation. \n" +
-                "• Code reviewing after the development. (Peer review). ", months));
+                "• Worked on Time and attendance module and implemented various features like recording, tracking, monitoring, evaluating employee's working times, absence etc. \n", months));
+
+        abhiStudentProfile.addWorkExperience(new WorkExperience("Unsdjkfkhsdkfisoft Technology Limited", "Junior Java Developer",
+                "32nd Street, Indiranagar, Banglore-India", 20294532, "Developed web and Enterprise application using Java and J2EE technology. \n" +
+                "• Implemented authorization, authentication using Spring Security. \n" +
+                "• Used spring frameworks to implement IOC and DI. \n" +
+                "• Worked on the agile environment for developing application. \n" +
+                "• Implemented Bean validation and AOP for logging. \n" +
+                "• Perform unit testing using JUnit and Mockito. \n" +
+                "• Implemented RESTful web service for data retrieval. \n" +
+                "• Implemented ORM in the persistence layer using hibernate frameworks. \n" +
+                "• Used Design patterns to develop robust applications with optimal functionality. \n" +
+                "• Worked on Time and attendance module and implemented various features like recording, tracking, monitoring, evaluating employee's working times, absence etc. \n", months));
 
 
         abhiStudentProfile.getSkillSets().add(javaJ2ee);
@@ -180,7 +189,7 @@ public class StudentProfileBootstrap implements ApplicationListener<ContextRefre
                 "This project is used to view each student profile.\n " +
                 "Each student can update delete or view his profile.\n" +
                 "This can be used by faculty or placement coordinators to fliter and keep track of students.\n",
-                "Student Profile Application","Technoligies used: Spring Framework 5.0, Hibernate, JPA 2.01, H2 database.\n" ));
+                "Student Profile Application","Spring Framework 5.0, Hibernate, JPA 2.01, H2 database.\n" ));
 
 
         studentProfiles.add(abhiStudentProfile);
@@ -231,15 +240,7 @@ public class StudentProfileBootstrap implements ApplicationListener<ContextRefre
                 "• Experience developing Service (EJB) components for middle tier component to implement business logic and deploying on JBOSS web server \n" +
                 "• Designed and developed various middleware integration components using various messaging technologies like JMS, Web sphere MQ and Mule ESB. \n" +
                 "• Have used Several Application Servers such as Web Logic,Web Sphere, JBOSS and web servers like Tomcat. \n" +
-                "• Expertise in testing with and deploying applications using Ant, Maven and Jenkins. \n" +
-                "• Experience working on UNIX, LINUX and Windows platforms. \n" +
-                "• Developed user interface using JSTL, Struts tag libraries,HTMLand wrote client side validation scripts usingJava Script. \n" +
-                "• Performed code enhancements, new feature implementation, and unit testing of the code following best practices. \n" +
-                "• Expertise on J2EE Design patterns and Core Java Design patterns like MVC, Factory, Session facade, Singleton, Front Controller, Business Delegate, Service Locator, VO, DAO. \n" +
-                "• Hands on experience with Object Oriented Design (OOD) and developing applications using UML. \n" +
-                "• Strong experience working with databases (Oracle, Microsoft SQL Server, MYSQL, DB2) and programming languages SQL, PL/SQL in developing Views, Stored Procedures, Functions, Triggers and Joins. \n" +
-                "• Experience in various XML technologies like XSL, XSLT, XPath, XSD, DTD, and XQuery. \n" +
-                "• Very good working knowledge on configuration management tools likeSVN, GIT and CSV. ", years));
+                "• Expertise in testing with and deploying applications using Ant, Maven and Jenkins. \n", years));
 
         davidStudentProfile.addProjects(new Projects("This project involves developing an application using which Auto Insurance companies can manage the repair shops in their network. This application allows insurance company users to add shops to their network terminate and suspend the shop from their network. Allows the approval process electronic using DocuSign tool. It provides an interface to maintain the shops profile. In short, makes the shop network management smooth, simple and easy. \n" +
                 "Responsibilities: \n" +

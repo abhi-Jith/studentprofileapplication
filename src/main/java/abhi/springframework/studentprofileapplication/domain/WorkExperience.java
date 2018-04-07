@@ -1,10 +1,12 @@
 package abhi.springframework.studentprofileapplication.domain;
 
-import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
-@Data
+@Getter
+@Setter
 @EqualsAndHashCode(exclude = "studentProfile")
 @Entity
 public class WorkExperience {
@@ -29,10 +31,7 @@ public class WorkExperience {
 
     public WorkExperience() {
     }
-//    public WorkExperience(String workExperienceDescription,StudentProfile studentProfile){
-//        this.workExperienceDescription=workExperienceDescription;
-//        this.studentProfile=studentProfile;
-//    }
+
 
 
     public WorkExperience(String companyName, String positionName, String companyAddress, Integer referenceNumber, String workExperienceDescription, UnitOfDuration unitOfDuration) {

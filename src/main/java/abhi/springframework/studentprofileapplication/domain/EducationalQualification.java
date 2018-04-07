@@ -1,10 +1,12 @@
 package abhi.springframework.studentprofileapplication.domain;
 
-import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
-@Data
+@Getter
+@Setter
 @EqualsAndHashCode(exclude = "studentProfile")
 @Entity
 public class EducationalQualification {
@@ -41,12 +43,5 @@ public class EducationalQualification {
     }
 
 
-//    public Byte[] getCertificateImage() {
-//        return certificateImage;
-//    }
-//
-//    public void setCertificateImage(Byte[] certificateImage) {
-//        this.certificateImage = certificateImage;
-//    }
 
 }

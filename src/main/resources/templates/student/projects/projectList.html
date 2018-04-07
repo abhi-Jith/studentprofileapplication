@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Projects List</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"
+          th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}">
+
+    <script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+    <style>
+        .panel-primary {
+            border-color: #927bb7;
+        }
+        .panel-primary > .panel-heading {
+            color: #fff;
+            background-color: #927bb7;
+            border-color: #927bb7;
+        }
+    </style>
+</head>
+<body>
+<!--/*@thymesVar id="student" type="abhi.springframework.studentprofileapplication.domain.StudentProfile"*/-->
+<!--/*@thymesVar id="projects" type="java.util.Set<abhi.springframework.studentprofileapplication.commands.ProjectsCommand>"*/-->
+<div class="container-fluid" style="margin-top: 20px">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-primary">
+
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-md-11 ">
+                            <h1 class="panel-title">Projects</h1>
+                        </div>
+                        <div class="col-md-1">
+                            <a class="btn btn-default" href="#" th:href="@{'/student/' + ${student.id} + '/projects/new'}" role="button">New</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+
+                    <div class="table-responsive" th:if="${not #lists.isEmpty(student.projects)}">
+                        <table class="table table-hover ">
+                            <thead class="thead-inverse">
+                            <tr>
+                                <th>ID</th>
+                                <th>Project Title</th>
+                                <th>Technologies Used</th>
+                                <th>Project Description</th>
+                                <th>View</th>
+                                <th>Update</th>
+                                <th>Delete</th>
+                            </tr>
+                            </thead>
+                            <tr th:remove="all">
+                                <td>123</td>
+                                <td>Tasty Goodnees 1</td>
+                                <td>123</td>
+                                <td>Tasty Goodnees 1</td>
+                                <td><a href="#">View</a></td>
+                                <td><a href="#">Update</a></td>
+                                <td><a href="#">Delete</a></td>
+                            </tr>
+                            <tr th:remove="all">
+                                <td>12333</td>
+                                <td>Tasty Goodnees 2</td>
+                                <td>123</td>
+                                <td>Tasty Goodnees 1</td>
+                                <td><a href="#">View</a></td>
+                                <td><a href="#">Update</a></td>
+                                <td><a href="#">Delete</a></td>
+                            </tr>
+                            <tr th:each="proj : ${student.projects}">
+                                <td th:text="${proj.id}">334</td>
+                                <td th:text="${proj.getProjectTitle()}">Pos name</td>
+                                <td th:text="${proj.getTechnologiesUsed()}">Ref no</td>
+                                <td th:text="${proj.getProjectDescription()}">Company Name</td>
+                                <td><a href="#" th:href="@{'/student/' + ${student.id} + '/projects/' + ${proj.id} + '/show'}">View</a></td>
+                                <td><a href="#" th:href="@{'/student/' + ${student.id} + '/projects/' + ${proj.id} + '/update'}">Update</a></td>
+                                <td><a href="#" th:href="@{'/student/' + ${student.id} + '/projects/' + ${proj.id} + '/delete'}">Delete</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

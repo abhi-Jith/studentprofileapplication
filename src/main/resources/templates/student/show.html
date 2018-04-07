@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Show Student Profile</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"
+          th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}">
+
+    <script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+
+    <style>
+        .panel-primary {
+            border-color: #927bb7;
+        }
+        .panel-primary > .panel-heading {
+            color: #fff;
+            background-color: #927bb7;
+            border-color: #927bb7;
+        }
+        </style>
+</head>
+<body>
+<div class="container-fluid" style="margin-top: 20px">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="pannel-group">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <!--/*@thymesVar id="student" type="abhi.springframework.studentprofileapplication.domain.StudentProfile"*/-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h1 class="panel-title" th:text="${student.firstName}">Student Name Here!</h1>
+                            </div>
+
+                            <div class="col-md-1">
+                                <a class="btn btn-default" href="#"
+                                   th:href="@{'/student/' + ${student.id} + '/image'}" role="button">Change Image</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h5>Last Name:</h5>
+                            </div>
+                            <div class="col-md-3">
+                                <!--/*@thymesVar id="student" type="abhi.springframework.studentprofileapplication.domain.StudentProfile"*/-->
+                                <p th:text="${student.lastName}">XYZ</p>
+                            </div>
+                            <div class="col-md-6">
+                                <img src="../../static/images/Staticabhi.jpg" th:src="@{'/student/' + ${student.id} + '/studentimage'}" width="200" height="200">
+                            </div>
+                            <div class="col-md-3">
+                                <h5>Gender:</h5>
+                            </div>
+                            <div class="col-md-3">
+                                <!--/*@thymesVar id="student" type="abhi.springframework.studentprofileapplication.domain.StudentProfile"*/-->
+                                <p th:text="${student.gender}">M/F</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h5>Date of Birth:</h5>
+                            </div>
+                            <div class="col-md-3">
+                                <!--/*@thymesVar id="student" type="abhi.springframework.studentprofileapplication.domain.StudentProfile"*/-->
+                                <p th:text="${student.dob}">05-5-1992</p>
+                            </div>
+                            <div class="col-md-3">
+                                <h5>Mobile No:</h5>
+                            </div>
+                            <div class="col-md-3">
+                                <!--/*@thymesVar id="student" type="abhi.springframework.studentprofileapplication.domain.StudentProfile"*/-->
+                                <p th:text="${student.mobileNumber}">42787923489</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h5>Address:</h5>
+                            </div>
+                            <div class="col-md-3">
+                                <!--/*@thymesVar id="student" type="abhi.springframework.studentprofileapplication.domain.StudentProfile"*/-->
+                                <p th:text="${student.address}"> 30 St
+                                    Apt 23
+                                    Macomb-IL</p>
+                            </div>
+                            <div class="col-md-3">
+                                <h5>E-mail id:</h5>
+                            </div>
+                            <div class="col-md-3">
+                                <!--/*@thymesVar id="student" type="abhi.springframework.studentprofileapplication.domain.StudentProfile"*/-->
+                                <p th:text="${student.emailId}">xyz@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h5>Coding Level:</h5>
+                            </div>
+                            <div class="col-md-3">
+                                <!--/*@thymesVar id="student" type="abhi.springframework.studentprofileapplication.domain.StudentProfile"*/-->
+                                <p th:text="${student.codingLevel}"> Beginner</p>
+                            </div>
+                            <div class="col-md-3">
+                                <h5>SSN:</h5>
+                            </div>
+                            <div class="col-md-3">
+                                <!--/*@thymesVar id="student" type="abhi.springframework.studentprofileapplication.domain.StudentProfile"*/-->
+                                <p th:text="${student.ssn}">302-201-2121</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h1 class="panel-title" >ABOUT ME</h1>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <!--/*@thymesVar id="student" type="abhi.springframework.studentprofileapplication.domain.StudentProfile"*/-->
+                                <p th:text="${student.aboutme.getAboutMe()}">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-md-11 ">
+                                <h1 class="panel-title">EDUCATIONAL QUALIFICATION</h1>
+                            </div>
+                            <div class="col-md-1">
+                                <!--/*@thymesVar id="student" type="abhi.springframework.studentprofileapplication.domain.StudentProfile"*/-->
+                                <a class="btn btn-default" href="#" th:href="@{'/student/' + ${student.id} + '/educationalQualifications'}" role="button">View</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <!--/*@thymesVar id="student" type="abhi.springframework.studentprofileapplication.domain.StudentProfile"*/-->
+                                <p  th:each="educationalQualifications : ${student.getEducationalQualifications()}" th:text="${educationalQualifications.getInstitutionName()+'-'
+                                        +educationalQualifications.getQualification()+' - '
+                                        +educationalQualifications.getYear()}">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-md-11 ">
+                                <h1 class="panel-title">Work Experience</h1>
+                            </div>
+                            <div class="col-md-1">
+                                <!--/*@thymesVar id="student" type="abhi.springframework.studentprofileapplication.domain.StudentProfile"*/-->
+                                <a class="btn btn-default" href="#" th:href="@{'/student/' + ${student.id} + '/workExperiences'}" role="button">View</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/*@thymesVar id="student" type="abhi.springframework.studentprofileapplication.domain.StudentProfile"*/-->
+                    <div class="panel-body" th:each="work : ${student.getWorkExperiences()}">
+                        <div class="row">
+                            <!--/*@thymesVar id="student" type="abhi.springframework.studentprofileapplication.domain.StudentProfile"*/-->
+                            <div class="col-md-3">
+                                <h5>Position Name:</h5>
+                            </div>
+                            <div class="col-md-3">
+                                <!--/*@thymesVar id="student" type="abhi.springframework.studentprofileapplication.domain.StudentProfile"*/-->
+                                <p th:text="${work.positionName}">XYZ</p>
+                            </div>
+                            <!--/*@thymesVar id="student" type="abhi.springframework.studentprofileapplication.domain.StudentProfile"*/-->
+                            <div class="col-md-3">
+                                <h5>Reference Number:</h5>
+                            </div>
+                            <div class="col-md-3">
+                                <!--/*@thymesVar id="student" type="abhi.springframework.studentprofileapplication.domain.StudentProfile"*/-->
+                                <p th:text="${work.referenceNumber}">XYZ</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h5>Company Name:</h5>
+                            </div>
+                            <div class="col-md-3">
+                                <!--/*@thymesVar id="student" type="abhi.springframework.studentprofileapplication.domain.StudentProfile"*/-->
+                                <p th:text="${work.companyName}">M/F</p>
+                            </div>
+                            <div class="col-md-3">
+                                <h5>Company Address:</h5>
+                            </div>
+                            <div class="col-md-3">
+                                <!--/*@thymesVar id="student" type="abhi.springframework.studentprofileapplication.domain.StudentProfile"*/-->
+                                <p th:text="${work.companyAddress}">M/F</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h5>Work Description:</h5>
+                            </div>
+                            <div class="col-md-12">
+                                <!--/*@thymesVar id="student" type="abhi.springframework.studentprofileapplication.domain.StudentProfile"*/-->
+                                <p th:text="${work.getWorkExperienceDescription()}">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <h5>Duration:</h5>
+                        </div>
+                        <div class="col-md-3">
+                            <!--/*@thymesVar id="student" type="abhi.springframework.studentprofileapplication.domain.StudentProfile"*/-->
+                            <p th:text="${work.unitOfDuration.getUod()}">M/F</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-md-11 ">
+                                <h1 class="panel-title">Projects</h1>
+                            </div>
+                            <div class="col-md-1">
+                                <!--/*@thymesVar id="student" type="abhi.springframework.studentprofileapplication.domain.StudentProfile"*/-->
+                                <a class="btn btn-default" href="#" th:href="@{'/student/' + ${student.id} + '/projects'}" role="button">View</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/*@thymesVar id="student" type="abhi.springframework.studentprofileapplication.domain.StudentProfile"*/-->
+                    <div class="panel-body"  th:each=" project : ${student.getProjects()}">
+                        <div class="row">
+                            <!--/*@thymesVar id="student" type="abhi.springframework.studentprofileapplication.domain.StudentProfile"*/-->
+                            <div class="col-md-3">
+                                <h5>Project Title:</h5>
+                            </div>
+                            <div class="col-md-3">
+                                <!--/*@thymesVar id="student" type="abhi.springframework.studentprofileapplication.domain.StudentProfile"*/-->
+                                <p th:text="${project.getProjectTitle()}">XYZ</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h5>Technologies Used:</h5>
+                            </div>
+                            <div class="col-md-6">
+                                <!--/*@thymesVar id="student" type="abhi.springframework.studentprofileapplication.domain.StudentProfile"*/-->
+                                <p th:text="${project.getTechnologiesUsed()}">M/F</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h5>Project Description:</h5>
+                            </div>
+                            <div class="col-md-12">
+                                <!--/*@thymesVar id="student" type="abhi.springframework.studentprofileapplication.domain.StudentProfile"*/-->
+                                <p th:text="${project.getProjectDescription()}">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-md-11 ">
+                                <h1 class="panel-title">SkillSet</h1>
+                            </div>
+                            <div class="col-md-1">
+                                <!--/*@thymesVar id="student" type="abhi.springframework.studentprofileapplication.domain.StudentProfile"*/-->
+                                <a class="btn btn-default" href="#" th:href="@{'/student/' + ${student.id} + '/skillSets'}" role="button">View</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h5>Skills:</h5>
+                            </div>
+                            <div class="col-md-9">
+                                <ul>
+                                    <!--/*@thymesVar id="student" type="abhi.springframework.studentprofileapplication.domain.StudentProfile"*/-->
+                                    <li th:each="skill:${student.getSkillSets()}" th:text="${skill.getSkillName() +' - '+skill.getDescription()}">skill one</li>
+                                    <li th:remove="all">skill two</li>
+                                    <li th:remove="all">skill three</li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

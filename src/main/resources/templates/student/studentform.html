@@ -1,0 +1,315 @@
+    <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Student Form</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"
+          th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}">
+
+    <script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+    <style>
+        .panel-primary {
+            border-color: #927bb7;
+        }
+        .panel-primary > .panel-heading {
+            color: #fff;
+            background-color: #927bb7;
+            border-color: #927bb7;
+        }
+    </style>
+</head>
+<body>
+    <!--/*@thymesVar id="student" type="abhi.springframework.studentprofileapplication.domain.StudentProfile"*/-->
+    <div class="container-fluid" style="margin-top: 20px">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <form  th:object="${student}" th:action="@{/student/}" method="post">
+                    <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+                        <p>Please Correct Errors Below</p>
+                    </div>
+
+                    <input type="hidden" th:field="*{id}"/>
+                    <div class="pannel-group">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h1 class="panel-title">Edit Student Information</h1>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-3 form-group" th:class="${#fields.hasErrors('firstName')}
+                                       ? 'col-md-3 form-group has-error' : 'col-md-3 form-group'">
+                                        <label th:text="#{student.firstName}">First Name:</label>
+                                        <input type="text" class="form-control" th:field="*{firstName}" th:errorclass="has-error"/>
+                                            <span class="help-block" th:if="${#fields.hasErrors('firstName')}">
+                                                <ul>
+                                                   <li th:each="err : ${#fields.errors('firstName')}" th:text="${err}"/>
+                                                </ul>
+                                            </span>
+                                    </div>
+
+                                    <div class="col-md-3 form-group" th:class="${#fields.hasErrors('lastName')}
+                                       ? 'col-md-3 form-group has-error' : 'col-md-3 form-group'">
+                                        <label>Last Name:</label>
+                                        <input type="text" class="form-control" th:field="*{lastName}" th:errorclass="has-error"/>
+                                        <span class="help-block" th:if="${#fields.hasErrors('lastName')}">
+                                                <ul>
+                                                   <li th:each="err : ${#fields.errors('lastName')}" th:text="${err}"/>
+                                                </ul>
+                                        </span>
+                                    </div>
+
+                                    <div class="col-md-3 form-group" th:class="${#fields.hasErrors('gender')}
+                                       ? 'col-md-3 form-group has-error' : 'col-md-3 form-group'">
+                                        <label>Gender:</label>
+                                        <input type="text" class="form-control" th:field="*{gender}" th:errorclass="has-error"/>
+                                        <span class="help-block" th:if="${#fields.hasErrors('gender')}">
+                                                <ul>
+                                                   <li th:each="err : ${#fields.errors('gender')}" th:text="${err}"/>
+                                                </ul>
+                                        </span>
+                                    </div>
+                                </div>
+                                <!--<div class="row">-->
+                                <!--<div class="col-md-3 form-group">-->
+                                <!--<label>Categories:</label>-->
+                                <!--</div>-->
+                                <!--<div class="col-md-9 form-group">-->
+                                <!--<div class="radio">-->
+                                <!--<label>-->
+                                <!--<input type="checkbox" value=""/>-->
+                                <!--Cat 1-->
+                                <!--</label>-->
+                                <!--</div>-->
+                                <!--<div class="radio" th:remove="all">-->
+                                <!--<label>-->
+                                <!--<input type="checkbox" value=""/>-->
+                                <!--Cat 2-->
+                                <!--</label>-->
+                                <!--</div>-->
+                                <!--</div>-->
+                                <!--</div>-->
+                                <div class="row">
+                                    <div class="col-md-3 form-group" th:class="${#fields.hasErrors('dob')}
+                                       ? 'col-md-3 form-group has-error' : 'col-md-3 form-group'">
+                                        <label>Date of Birth:</label>
+                                        <input type="text" class="form-control" th:field="*{dob}" th:errorclass="has-error"/>
+                                        <span class="help-block" th:if="${#fields.hasErrors('dob')}">
+                                                <ul>
+                                                   <li th:each="err : ${#fields.errors('dob')}" th:text="${err}"/>
+                                                </ul>
+                                            </span>
+                                    </div>
+                                    <div class="col-md-3 form-group" th:class="${#fields.hasErrors('mobileNumber')}
+                                       ? 'col-md-3 form-group has-error' : 'col-md-3 form-group'">
+                                        <label>Mobile No:</label>
+                                        <input type="text" class="form-control" th:field="*{mobileNumber}" th:errorclass="has-error"/>
+                                        <span class="help-block" th:if="${#fields.hasErrors('mobileNumber')}">
+                                                <ul>
+                                                   <li th:each="err : ${#fields.errors('mobileNumber')}" th:text="${err}"/>
+                                                </ul>
+                                            </span>
+                                    </div>
+                                    <div class="col-md-3 form-group">
+                                        <label>Coding Level:</label>
+                                        <select class="form-control" th:field="*{codingLevel}" >
+                                            <option th:each="codingLevelValue : ${T(abhi.springframework.studentprofileapplication.domain.CodingLevel).values()}"
+                                                    th:value="${codingLevelValue.name()}"
+                                                    th:text="${codingLevelValue.name()}">BEGINNER</option>
+                                        </select>
+                                        <select class="form-control" th:remove="all">
+                                            <option>MODERATE</option>
+                                            <option>PROFESSIONAL</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3 form-group" th:class="${#fields.hasErrors('address')}
+                                       ? 'col-md-3 form-group has-error' : 'col-md-3 form-group'">
+                                        <label>Address:</label>
+                                        <input type="text" class="form-control" th:field="*{address}" th:errorclass="has-error"/>
+                                        <span class="help-block" th:if="${#fields.hasErrors('address')}">
+                                                <ul>
+                                                   <li th:each="err : ${#fields.errors('address')}" th:text="${err}"/>
+                                                </ul>
+                                        </span>
+                                    </div>
+                                    <div class="col-md-3 form-group" th:class="${#fields.hasErrors('emailId')}
+                                       ? 'col-md-3 form-group has-error' : 'col-md-3 form-group'">
+                                        <label>Email id:</label>
+                                        <input type="text" class="form-control" th:field="*{emailId}" th:errorclass="has-error"/>
+                                        <span class="help-block" th:if="${#fields.hasErrors('emailId')}">
+                                                <ul>
+                                                   <li th:each="err : ${#fields.errors('emailId')}" th:text="${err}"/>
+                                                </ul>
+                                        </span>
+                                    </div>
+                                    <div class="col-md-3 form-group" th:class="${#fields.hasErrors('ssn')}
+                                       ? 'col-md-3 form-group has-error' : 'col-md-3 form-group'">
+                                        <label>SSN:</label>
+                                        <input type="text" class="form-control" th:field="*{ssn}" th:errorclass="has-error"/>
+                                        <span class="help-block" th:if="${#fields.hasErrors('ssn')}">
+                                                <ul>
+                                                   <li th:each="err : ${#fields.errors('ssn')}" th:text="${err}"/>
+                                                </ul>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h1 class="panel-title">About Me</h1>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12 form-group">
+                                        <textarea class="form-control" rows="5" th:field="*{aboutme.aboutMe}"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-md-11 ">
+                                        <h1 class="panel-title">Educational Qualification</h1>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <a class="btn btn-default" href="#" th:href="@{'/student/' + ${student.id} + '/educationalQualification/new'}" role="button">Edit</a>
+                                        <!--<a class="btn btn-default" href="#" role="button">View</a>-->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body" th:each="educationalQualifications : ${student.educationalQualifications}">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <ul>
+                                            <li th:remove="all">Univ of texas - MS - 2012-2014</li>
+                                            <textarea class="form-control" rows="4"
+                                                      th:text="${(educationalQualifications.getInstitutionName() +
+                                            ' - ' + educationalQualifications.getQualification() +
+                                            ' - ' + educationalQualifications.getYear())}">
+                                            </textarea>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-md-11 ">
+                                        <h1 class="panel-title">Work Experience</h1>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <!--/*@thymesVar id="student" type="abhi.springframework.studentprofileapplication.domain.StudentProfile"*/-->
+                                        <a class="btn btn-default" href="#" th:href="@{'/student/' + ${student.id} + '/workExperiences'}" role="button">Edit</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body" th:each="work : ${student.workExperiences}">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <h5>Position Name:</h5>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <p th:text="${work.getPositionName()}">XYZ</p>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h5>Reference Number:</h5>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <p th:text="${work.getReferenceNumber()}">XYZ</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <h5>Company Name:</h5>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <p th:text="${work.getCompanyName()}">M/F</p>
+                                        <!--<input type="text" class="form-control" th:field="*"/>-->
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h5>Company Address:</h5>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <p th:text="${work.getCompanyAddress()}">M/F</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 form-group">
+                                        <textarea class="form-control" rows="5" th:text="${work.getWorkExperienceDescription()}"></textarea>
+                                </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <h5>Unit of Duration:</h5>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <p th:text="${work.unitOfDuration.getUod()}">M/F</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-md-11 ">
+                                        <h1 class="panel-title">Projects</h1>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <!--/*@thymesVar id="student" type="abhi.springframework.studentprofileapplication.domain.StudentProfile"*/-->
+                                        <a class="btn btn-default" href="#" th:href="@{'/student/' + ${student.id} + '/projects'}" role="button">Edit</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body" th:each="project:${student.projects}">
+                                <div class="row">
+                                    <div class="col-md-12 form-group">
+                                        <textarea class="form-control" rows="5"  th:text="${project.getProjectTitle()
+                                        +' - ' + project.getTechnologiesUsed() +' - ' + project.getProjectDescription()}"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h1 class="panel-title">Skills</h1>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12 form-group">
+                                        <textarea class="form-control" rows="3" th:each="skill:${student.skillSets}" th:text="${skill.getSkillName()+' - ' +skill.getDescription()}"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                        <div class ="panel panel-primary">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12 form-group">
+                                        <p>After submitting the above details, you can add the rest of the details by going back to home page and clicking on your profile and clicking on "NEW" to create  new fields for educational qualification, projects and work experience and skillset.</p>
+                                    </div>
+                                </div>
+
+                        </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
