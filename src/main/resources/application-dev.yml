@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    initialization-mode: always
+    url: jdbc:mysql://192.168.99.100:3306/sfg_dev
+    username: sfg_dev_user
+    password: abhi
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    database: mysql
+    show-sql: true
+    properties:
+      javax:
+        persistence:
+          schema-generation:
+            create-source: metadata
+            scripts:
+              action: create
+              create-target: abhi_database_create.sql

@@ -1,0 +1,16 @@
+create table aboutme (id bigint not null auto_increment, about_me longtext, student_profile_id bigint, primary key (id)) engine=InnoDB;
+create table educational_qualification (id bigint not null auto_increment, institution_name varchar(255), qualification varchar(255), year varchar(255), student_profile_id bigint, primary key (id)) engine=InnoDB;
+create table projects (id bigint not null auto_increment, project_description longtext, project_title varchar(255), technologies_used varchar(255), student_profile_id bigint, primary key (id)) engine=InnoDB;
+create table skill_set (id bigint not null auto_increment, description varchar(255), skill_name varchar(255), primary key (id)) engine=InnoDB;
+create table student_profile (id bigint not null auto_increment, address varchar(255), coding_level varchar(255), dob varchar(255), email_id varchar(255), first_name varchar(255), gender varchar(255), image longblob, last_name varchar(255), mobile_number varchar(255), ssn integer, aboutme_id bigint, primary key (id)) engine=InnoDB;
+create table student_profile_skill_set (student_profile_id bigint not null, skill_set_id bigint not null, primary key (student_profile_id, skill_set_id)) engine=InnoDB;
+create table unit_of_duration (id bigint not null auto_increment, uod varchar(255), primary key (id)) engine=InnoDB;
+create table work_experience (id bigint not null auto_increment, company_address varchar(255), company_name varchar(255), position_name varchar(255), reference_number integer, work_experience_description longtext, student_profile_id bigint, unit_of_duration_id bigint, primary key (id)) engine=InnoDB;
+alter table aboutme add constraint FK8mu8ynjjk8pngx25avqkqpwt0 foreign key (student_profile_id) references student_profile (id);
+alter table educational_qualification add constraint FKhorn9tjh3d8ss5yle7c2nfo9g foreign key (student_profile_id) references student_profile (id);
+alter table projects add constraint FK3yls10grxo7fojsbfvewyt1hv foreign key (student_profile_id) references student_profile (id);
+alter table student_profile add constraint FKowej1q1v78rqltrct9xebe6m6 foreign key (aboutme_id) references aboutme (id);
+alter table student_profile_skill_set add constraint FKsad4f4grrd9kkvvnkfcs88nwo foreign key (skill_set_id) references skill_set (id);
+alter table student_profile_skill_set add constraint FK8uqoqr9nogx5qmnxwrnbkn1a8 foreign key (student_profile_id) references student_profile (id);
+alter table work_experience add constraint FKf8gkp6rkmkrf50deme25cym1t foreign key (student_profile_id) references student_profile (id);
+alter table work_experience add constraint FK4hykvbl29f72jbvn16hgyylmo foreign key (unit_of_duration_id) references unit_of_duration (id);
