@@ -100,7 +100,7 @@ public class StudentProfileControllerTest {
                 .param("firstName", "some string")
         )
                 .andExpect(status().isOk())
-                .andExpect(view().name("redirect:/student/2/show"));
+                .andExpect(view().name("student/studentform"));
 
     }
 
