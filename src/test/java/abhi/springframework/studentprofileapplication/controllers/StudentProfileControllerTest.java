@@ -99,7 +99,7 @@ public class StudentProfileControllerTest {
                 .param("id", "")
                 .param("firstName", "some string")
         )
-                .andExpect(status().is3xxRedirection())
+                .andExpect(status().isOk())
                 .andExpect(view().name("redirect:/student/2/show"));
 
     }
